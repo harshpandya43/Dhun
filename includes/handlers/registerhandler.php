@@ -18,27 +18,7 @@
         return $inputText;
     }
 
-    function validateUserName($name){
-
-    }
-
-    function validateFirstName($firstName){
-        
-    }
-
-    function validateLastName($lastName){
-        
-    }
-
-    function validatePasswords($password, $confirmPassword){
-        
-    }
-
-    function validateEmails($email, $confirmEmail){
-        
-    }
-   
-
+    
     //Register Button
     if(isset($_POST['registerButton'])){
         // echo "Register button is pressed";
@@ -50,12 +30,8 @@
         $password = sanitizeFormPassword($_POST['password']);       
         $confirmPassword = sanitizeFormPassword($_POST['confirmPassword']);
         
-
-        validateUserName($userName);
-        validateFirstName($firstName);
-        validateLastName($lastName);
-        validateEmails($email, $confirmEmail);
-        validatePasswords($password, $confirmPassword);
+        $account->register($userName, $firstName, $lastName, $email, $confirmEmail, $password, $confirmPassword);
+       
 
 
     }
