@@ -11,6 +11,12 @@
                 $this->validateLastName($ln);
                 $this->validateEmails($email, $cemail);
                 $this->validatePasswords($pass, $cpass);
+
+                if(empty($this->errorArray)){
+                    return true;
+                }else{
+                    return false;
+                }
             }
 
             function validateUserName($name){
@@ -37,6 +43,20 @@
             }
         
             private function validatePasswords($password, $confirmPassword){
+                if($password != $confirmPassword){
+                    array_push($this->errorArray,"Your password don't match.");
+                    return;
+                }
+                
+                if(preg_match('/[^A-Za-z0-9]/',$password)){
+                    array_push($this->errorArray,"Your password can only contain numbers and letters");
+                    return;
+                }
+
+                if(strlen($password)<8){
+                    array_push($this->errorArray, "Your password must be at least 8 characters long");
+                    return;
+                }
             
             }
         
