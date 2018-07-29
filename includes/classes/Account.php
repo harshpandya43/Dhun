@@ -1,6 +1,6 @@
 <?php 
     class Account{
-            private errorArray;
+            private $errorArray;
             public function __construct(){
                 $this->errorArray = array(); 
             }
@@ -17,6 +17,13 @@
                 }else{
                     return false;
                 }
+            }
+
+            public function getError($error){
+                if(!in_array($error, $this->errorArray)){
+                    $error="";
+                }
+                return "<span class='errorMessage'>$error</span>";
             }
 
             function validateUserName($name){
